@@ -13,11 +13,5 @@ namespace Core.Interfaces.Repositories
 
         T GetById(int id, Func<IQueryable<T>, IQueryable<T>> include);
 
-        void Create(T entidade);
-
-        void Update(T entidade);
-
-        void Delete(int id);
-
     }
 }

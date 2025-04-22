@@ -1,6 +1,0 @@
-@CadastroProdutor_HostAddress = http://localhost:5169
-
-GET {{CadastroProdutor_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

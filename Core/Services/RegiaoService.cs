@@ -1,9 +1,6 @@
 ﻿using Core.DTOs;
-using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
-using Core.Requests.Create;
-using Core.Requests.Update;
 
 namespace Core.Services
 {
@@ -71,32 +68,6 @@ namespace Core.Services
 
             return null;
         }
-
-            public void Create(RegiaoRequest regiaoRequest)
-            {
-                var regiao = new Regiao()
-                {
-                    DDD = regiaoRequest.DDD,
-                    Descricao = regiaoRequest.Descricao
-                };
-
-                _regiaoRepository.Create(regiao);
-            }
-
-            public void Put(RegiaoUpdateRequest regiaoUpdateRequest)
-            {
-                var regiao = _regiaoRepository.GetById(regiaoUpdateRequest.Id);
-                regiao.DDD = regiaoUpdateRequest.DDD ?? regiao.DDD;
-                regiao.Descricao = regiaoUpdateRequest.Descricao ?? regiao.Descricao;
-
-                _regiaoRepository.Update(regiao);
-            }
-
-            public void Delete(int id)
-            {
-                _regiaoRepository.Delete(id);
-            }
-
 
         }
     }

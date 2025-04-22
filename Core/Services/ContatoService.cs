@@ -1,9 +1,6 @@
 ﻿using Core.DTOs;
-using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
-using Core.Requests.Create;
-using Core.Requests.Update;
 using Microsoft.EntityFrameworkCore;
 
 namespace Core.Services
@@ -97,50 +94,6 @@ namespace Core.Services
 
             return contatosDTO;
         }
-
-        public void Create(ContatoRequest contatoRequest)
-        {
-            var regiao = _regiaoRepository.GetByDDD(contatoRequest.DDD);
-
-            if (regiao is not null)
-            {
-                var contato = new Contato()
-                {
-                    Nome = contatoRequest.Nome,
-                    Telefone = contatoRequest.Telefone,
-                    Email = contatoRequest.Email,
-                    RegiaoId = regiao.Id,
-                    Regiao = regiao
-                };
-
-                _contatoRepository.Create(contato);
-            }
-        }
-
-        public void Put(ContatoUpdateRequest contatoUpdateRequest)
-        {
-            var contato = _contatoRepository.GetById(contatoUpdateRequest.Id);
-
-            contato.Nome = contatoUpdateRequest.Nome ?? contato.Nome;
-            contato.Telefone = contatoUpdateRequest.Telefone ?? contato.Telefone;
-            contato.Email = contatoUpdateRequest.Email ?? contato.Email;
-
-            if (contatoUpdateRequest.DDD is not null)
-            {
-                var regiao = _regiaoRepository.GetByDDD(contatoUpdateRequest.DDD.Value);
-
-                if (regiao is not null)
-                    contato.RegiaoId = regiao.Id;
-            }
-
-            _contatoRepository.Update(contato);
-        }
-
-        public void Delete(int id)
-        {
-            _contatoRepository.Delete(id);
-        }
-
 
     }
 }

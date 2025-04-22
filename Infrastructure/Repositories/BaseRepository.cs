@@ -16,19 +16,6 @@ namespace Infrastructure.Repositories
             _dbSet = _context.Set<T>();
         }
 
-        public void Create(T entidade)
-        {
-            entidade.DataInclusao = DateTime.Now;
-            _dbSet.Add(entidade);
-            _context.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            _dbSet.Remove(GetById(id));
-            _context.SaveChanges(); 
-        }
-
         public IList<T> GetAll()
         {
             return [.. _dbSet];
@@ -59,12 +46,6 @@ namespace Infrastructure.Repositories
 
             return query.FirstOrDefault(e => e.Id == id)
                 ?? throw new KeyNotFoundException($"Entidade com o ID {id} não encontrada.");
-        }
-
-        public void Update(T entidade)
-        {
-            _dbSet.Update(entidade);
-            _context.SaveChanges();
         }
     }
 }

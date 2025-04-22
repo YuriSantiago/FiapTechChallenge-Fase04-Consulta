@@ -22,13 +22,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AtualizacaoProdutor\AtualizacaoProdutor.csproj" />
-    <ProjectReference Include="..\CadastroProdutor\CadastroProdutor.csproj" />
-    <ProjectReference Include="..\ExclusaoProdutor\ExclusaoProdutor.csproj" />
+    <Using Include="Xunit" />
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <Folder Include="Consulta\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
