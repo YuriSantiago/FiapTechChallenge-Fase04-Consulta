@@ -17,7 +17,7 @@ var host = new HostBuilder()
 
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionString"));
+            options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionString"), sql => sql.EnableRetryOnFailure());
         });
 
         services.AddScoped<IRegiaoRepository, RegiaoRepository>();
