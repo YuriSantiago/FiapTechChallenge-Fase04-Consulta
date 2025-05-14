@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace IntegrationTests
 {
-    public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
+    public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
     {
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
