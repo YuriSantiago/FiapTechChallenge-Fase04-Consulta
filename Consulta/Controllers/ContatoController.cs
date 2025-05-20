@@ -11,6 +11,7 @@ namespace Consulta.Controllers
         private readonly IContatoService _contatoService;
         private readonly IRegiaoService _regiaoService;
 
+        // teste de CI
         public ContatoController(IContatoService contatoService, IRegiaoService regiaoService)
         {
             _contatoService = contatoService;
